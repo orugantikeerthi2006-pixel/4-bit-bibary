@@ -1,0 +1,133 @@
+# 4-Bit Binary Adder using Verilog
+
+## Introduction
+
+This project implements a 4-bit binary adder using Verilog HDL.
+
+The circuit accepts two 4-bit binary numbers as inputs and produces a 5-bit binary result. The fifth bit represents the carry generated when the addition exceeds 4 bits.
+
+## Block Diagram
+
+```text
+       A[3:0]
+          │
+          │
+          ▼
+     ┌───────────┐
+     │           │
+     │  4-BIT    │──────► Sum[4:0]
+     │  ADDER    │
+     │           │
+     └───────────┘
+          ▲
+          │
+          │
+       B[3:0]
+```
+
+## Inputs
+
+| Signal |  Width | Description          |
+| ------ | -----: | -------------------- |
+| `A`    | 4 bits | First binary number  |
+| `B`    | 4 bits | Second binary number |
+
+## Output
+
+| Signal |  Width | Description     |
+| ------ | -----: | --------------- |
+| `Sum`  | 5 bits | Result of A + B |
+
+## How It Works
+
+The Verilog `+` operator performs binary addition.
+
+For example:
+
+```text
+  0101
++ 0011
+------
+  1000
+```
+
+Therefore:
+
+```text
+5 + 3 = 8
+```
+
+The maximum value of a 4-bit binary number is 15:
+
+```text
+1111 = 15
+```
+
+When two maximum values are added:
+
+```text
+  1111
++ 1111
+------
+ 11110
+```
+
+Therefore:
+
+```text
+15 + 15 = 30
+```
+
+A 5-bit output is required to represent the result.
+
+## Files
+
+```text
+4-bit-binary-adder/
+│
+├── README.md
+├── four_bit_adder.v
+├── four_bit_adder_tb.v
+└── simulation_output.txt
+```
+
+### `four_bit_adder.v`
+
+Contains the main Verilog implementation.
+
+### `four_bit_adder_tb.v`
+
+Contains the testbench used to verify the design.
+
+### `simulation_output.txt`
+
+Contains the simulation results.
+
+## Simulation Results
+
+```text
+ A       B       | Sum
+-------------------------
+0000    0000    | 00000
+0001    0010    | 00011
+0101    0011    | 01000
+0111    0001    | 01000
+1001    0110    | 01111
+1111    0001    | 10000
+1111    1111    | 11110
+```
+
+## Tools
+
+This project can be simulated using:
+
+* Icarus Verilog
+* GTKWave
+* ModelSim
+* Vivado
+
+## Conclusion
+
+The 4-bit binary adder successfully adds two 4-bit binary numbers and produces a 5-bit result. The testbench verifies the design using multiple input combinations, including cases that generate a carry.
+
+This project demonstrates basic Verilog HDL, binary arithmetic, module instantiation, testbench development, and digital circuit simulation.

@@ -1,0 +1,66 @@
+`timescale 1ns/1ps
+
+module four_bit_adder_tb;
+
+    reg  [3:0] A;
+    reg  [3:0] B;
+    wire [4:0] Sum;
+
+    // Instantiate the 4-bit adder
+    four_bit_adder uut (
+        .A(A),
+        .B(B),
+        .Sum(Sum)
+    );
+
+    initial begin
+
+        $display(" A       B       | Sum");
+        $display("-------------------------");
+
+        // Test 1
+        A = 4'b0000;
+        B = 4'b0000;
+        #10;
+        $display("%b    %b    | %b", A, B, Sum);
+
+        // Test 2
+        A = 4'b0001;
+        B = 4'b0010;
+        #10;
+        $display("%b    %b    | %b", A, B, Sum);
+
+        // Test 3
+        A = 4'b0101;
+        B = 4'b0011;
+        #10;
+        $display("%b    %b    | %b", A, B, Sum);
+
+        // Test 4
+        A = 4'b0111;
+        B = 4'b0001;
+        #10;
+        $display("%b    %b    | %b", A, B, Sum);
+
+        // Test 5
+        A = 4'b1001;
+        B = 4'b0110;
+        #10;
+        $display("%b    %b    | %b", A, B, Sum);
+
+        // Test 6
+        A = 4'b1111;
+        B = 4'b0001;
+        #10;
+        $display("%b    %b    | %b", A, B, Sum);
+
+        // Test 7
+        A = 4'b1111;
+        B = 4'b1111;
+        #10;
+        $display("%b    %b    | %b", A, B, Sum);
+
+        $finish;
+    end
+
+endmodule
